@@ -1,7 +1,7 @@
 const express = require('express');
 const {matematicas} = require('../datos/cursos.js').infoCursos;
 
-//solicitudes GET
+// GET
 const routerMatematicas = express.Router();
 
 routerMatematicas.get('/', (req, res) => {
@@ -41,7 +41,7 @@ routerMatematicas.get('/:nivel/:vistas', (req, res) => {
     res.send(JSON.stringify(resultados));
 });
 
-//solicitudes POST
+// POST
 routerMatematicas.post('/', (req, res) => {
     let cursoNuevo = req.body;
     console.log(req.body);
@@ -50,7 +50,7 @@ routerMatematicas.post('/', (req, res) => {
     res.send(JSON.stringify(matematicas));
 })
 
-//solicitudes PUT
+// PUT
 routerMatematicas.put('/:id', (req, res) => {
     let cursoActualizado = req.body;
     const id = req.params.id;
@@ -74,7 +74,7 @@ routerMatematicas.patch('/:id', (req, res) => {
     res.send(JSON.stringify(matematicas));
 })
 
-//solicitudes DELETE
+// DELETE
 routerMatematicas.delete('/:id', (req, res) => {
     const id = req.params.id;
     const indice = matematicas.findIndex(curso => curso.id == id);
